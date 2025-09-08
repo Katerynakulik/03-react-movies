@@ -8,7 +8,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
   const [query, setQuery] = useState("");
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const topic = query.trim;
+    const topic = query.trim();
     if (topic === "") {
       toast.error("Please enter your search query.");
       return;
