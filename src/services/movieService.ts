@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Movie } from "../types/movies";
+import type { Movie } from "../types/movie";
 import toast from "react-hot-toast";
 
 export const fetchMovies = async (topic: string): Promise<Movie[]> => {

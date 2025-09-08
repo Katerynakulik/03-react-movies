@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.module.css";
 import SearchBar from "../SearchBar/SearchBar";
-import type { Movie } from "../../types/movies";
+import type { Movie } from "../../types/movie";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { fetchMovies } from "../../services/movieService";
