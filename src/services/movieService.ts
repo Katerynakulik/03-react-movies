@@ -2,20 +2,27 @@ import axios from "axios";
 import type { Movie } from "../types/movie";
 import toast from "react-hot-toast";
 
+interface MoviesHttpResponse {
+  responce: Movie[];
+}
+
 export const fetchMovies = async (topic: string): Promise<Movie[]> => {
   try {
-    const response = await axios(`https://api.themoviedb.org/3/search/movie`, {
-      params: {
-        query: topic,
-        include_adult: false,
-        language: "en-US",
-        page: 1,
-      },
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
-      },
-    });
+    const response = await axios.get<MoviesHttpResponse>(
+      `https://api.themoviedb.org/3/search/movie`,
+      {
+        params: {
+          query: topic,
+          include_adult: false,
+          language: "en-US",
+          page: 1,
+        },
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`,
+        },
+      }
+    );
 
     console.log("Fetched movies:", response.data.results);
 
