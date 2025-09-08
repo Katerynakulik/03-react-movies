@@ -2,10 +2,6 @@ import axios from "axios";
 import type { Movie } from "../types/movies";
 import toast from "react-hot-toast";
 
-interface MoviesHttpResponce {
-  results: Movie[];
-}
-
 export const fetchMovies = async (topic: string): Promise<Movie[]> => {
   try {
     const response = await axios(`https://api.themoviedb.org/3/search/movie`, {

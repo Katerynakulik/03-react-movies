@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import styles from "./SearchBar.module.css";
-import { use, useState } from "react";
+import { useState } from "react";
 interface SearchBarProps {
   onSubmit: (topic: string) => void;
 }
