@@ -8,23 +8,21 @@ interface MovieModalProps {
 }
 
 export default function MovieModal({ movie, onClose }: MovieModalProps) {
-  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    useEffect(() => {
-      const handleEsc = (event: KeyboardEvent)=>
-        if(event.key === "Escape"){
-          onClose();
-        };
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
     };
 
-    document.addEventListener('keydown', handleEsc);
-    document.body.style.overflow ='hidden';
+    document.addEventListener("keydown", handleEsc);
+    document.body.style.overflow = "hidden";
 
-    return () =>{
-      document.removeEventListener('keydown', handleEsc);
-      document.body.style.overflow = '';
-    }
-
-     }, [onClose]);
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
 
   if (!movie) return null;
 
@@ -34,9 +32,13 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
     }
   };
 
-
   return createPortal(
-    <div className={css.backdrop} role="dialog" aria-modal="true" onClick={handleBackdropClick}>
+    <div
+      className={css.backdrop}
+      role="dialog"
+      aria-modal="true"
+      onClick={handleBackdropClick}
+    >
       <div className={css.modal}>
         <button
           className={css.closeButton}
